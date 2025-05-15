@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Categoría</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Editar Categoría</h1>
+
+    <form method="post" action="/categoria/guardar" class="row g-3">
+        <!-- Campo oculto para enviar el id -->
+        <input type="hidden" name="idCategoria" th:value="${categoria.idCategoria}">
+
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" th:value="${categoria.nombre}" required>
+        </div>
+
+        <div class="col-md-12">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" th:text="${categoria.descripcion}" required></textarea>
+        </div>
+        
+        <div class="col-12 d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+            <a href="/categoria/listar" class="btn btn-secondary ms-2">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

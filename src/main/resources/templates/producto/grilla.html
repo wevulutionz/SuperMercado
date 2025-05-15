@@ -1,0 +1,31 @@
+<th:block th:fragment="grilla(productos)">
+
+  <!-- Si no hay resultados -->
+  <tr th:if="${#lists.isEmpty(productos)}">
+    <td colspan="7" class="text-center fst-italic">
+      No se encontraron productos que coincidan con la busqueda
+    </td>
+  </tr>
+
+  <!-- Si hay resultados -->
+  <tr th:each="producto : ${productos}">
+    <td th:text="${producto.idProducto}">ID</td>
+    <td th:text="${producto.nombre}">Nombre</td>
+    <td th:text="${producto.precio}">Precio</td>
+    <td th:text="${producto.stock}">Stock</td>
+    <td th:text="${producto.categoria.nombre}">Categoria</td>
+    <td th:text="${producto.proveedor.nombre}">Proveedor</td>
+    <td>
+      <a th:href="@{/producto/editar/{id}(id=${producto.idProducto})}"
+         class="btn btn-warning btn-sm">
+        Editar
+      </a>
+      <a th:href="@{/producto/eliminar/{id}(id=${producto.idProducto})}"
+         class="btn btn-danger btn-sm"
+         onclick="return confirm('¿Está seguro de eliminar este producto?');">
+        Eliminar
+      </a>
+    </td>
+  </tr>
+
+</th:block>

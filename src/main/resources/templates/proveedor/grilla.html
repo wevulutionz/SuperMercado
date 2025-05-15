@@ -1,0 +1,17 @@
+<th:block th:fragment="grilla(proveedores)">
+  <tr th:if="${#lists.isEmpty(proveedores)}">
+    <td colspan="5" class="text-center fst-italic">
+      No se encontraron proveedores que coincidan con la busqueda
+    </td>
+  </tr>
+  <tr th:each="prov : ${proveedores}">
+    <td th:text="${prov.idProveedor}">ID</td>
+    <td th:text="${prov.nombre}">Nombre</td>
+    <td th:text="${prov.correo}">Correo</td>
+    <td th:text="${prov.telefono}">Telefono</td>
+    <td>
+      <a th:href="@{/proveedor/editar/{id}(id=${prov.idProveedor})}" class="btn btn-warning btn-sm">Editar</a>
+      <a th:href="@{/proveedor/eliminar/{id}(id=${prov.idProveedor})}" class="btn btn-danger btn-sm" onclick="return confirm('Esta seguro de eliminar este proveedor?');">Eliminar</a>
+    </td>
+  </tr>
+</th:block>
