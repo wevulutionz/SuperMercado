@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Categoria;
-import com.example.demo.model.Proveedor;
 import com.example.demo.service.SCategoria;
 
 @Controller
@@ -36,8 +35,8 @@ public class CCategoria {
 	}
     @GetMapping("/crear")
     public String nuevaCategoria(Model model) {
-        model.addAttribute("categoria", new Proveedor());
-        return "proveedor/crear";
+        model.addAttribute("categoria", new Categoria());
+        return "categoria/crear";
     }
     @PostMapping("/guardar")
     public String guardarCategoria(@ModelAttribute Categoria categoria) {
@@ -53,6 +52,6 @@ public class CCategoria {
     @GetMapping("/eliminar/{id}")
     public String eliminarCategoria(@PathVariable Integer id) {
     	service.eliminarCategoria(id);
-    	return "redirect:/proveedor/listar";
+    	return "redirect:/categoria/listar";
     }
 }
