@@ -34,7 +34,7 @@ public class SCategoria {
         return rCategoria.findById(idCategoria);
     }
     
-    public List<Categoria> buscarPorNombre(String nombre) {
+    public List<Categoria> buscarCategoriaPorNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
             return rCategoria.findAll();
         }
